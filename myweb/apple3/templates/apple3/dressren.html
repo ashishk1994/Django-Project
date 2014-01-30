@@ -1,0 +1,210 @@
+{% load staticfiles %}
+<!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" />
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+-->
+{%load a %}
+<html>
+<head>
+<title>MY WEB</title>
+<link href="{%  static 	'bootstrap/css/bootstrap.css'%}" rel="stylesheet" media="screen">
+
+</head>
+<body style="background:url({% static 'bgnoise_lg.jpg' %}) repeat scroll 0 0 #F0F0F0;">
+<style>
+td{
+
+padding:8px 4px;
+margin:auto;
+}
+</style>
+
+<h2>Welcome {{user}}</h2>
+<a href="/logout">logout &nbsp</a><i class="icon-off"></i>
+<ul class="nav nav-pills">
+	<li>
+		<a href="/">Home</a>
+	</li>
+{% ifequal cat 2 %}
+	<li class="active">
+		<a href="/dress2/female/">Female</a>
+	</li>
+	<li>
+		<a href="/dress2/male/">Male</a>
+	</li>
+{% endifequal %}
+{% ifequal cat 1 %}
+	<li>
+		<a href="/dress2/female/">Female</a>
+	</li>
+	<li class="active">
+		<a href="/dress2/male/">Male</a>
+	</li>
+{% endifequal %}
+{% ifequal cat 0 %}
+	<li>
+		<a href="/dress2/female/">Female</a>
+	</li>
+	<li>
+		<a href="/dress2/male/">Male</a>
+	</li>
+{% endifequal %}
+</ul>
+{% ifequal fl 0 %}
+
+<div class="pagination">
+<div class="pagination pagination-right">
+	<ul>
+		{% if images.has_previous %}
+			<li><a href="?page={{images.previous_page_number}}">Prev</a></li>
+		{% endif %}
+		<!--{% for j in lst %}
+			<li><a href="?page={{j}}">{{j}}</a></li>
+		{% endfor %}-->
+		{% if images.number|check:paginator.num_pages %}
+			<li><a href="?page={{images.next_page_number}}">Next</a></li>
+		{% endif %}
+		
+	</ul>
+</div>
+</div>
+<hr>
+{% ifequal cat 2 %}
+<select id="foo">
+	<option value="">Sort By</option>
+	<option value="/dress2/female/1">Title</option>
+	<option value="/dress2/female/2">High to Low Price</option>
+	<option value="/dress2/female/3">Low to High Price</option>
+</select>
+<script>
+document.getElementById("foo").onchange = function() {
+            if (this.selectedIndex!==0) {
+		            window.location.href = this.value;
+			            }        
+	        };
+</script>
+<!--div class="bs-docs-example">
+            <div class="btn-toolbar" style="margin: 0;">
+              <div class="btn-group">
+                <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Sort By&nbsp;&nbsp;<span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a href="/dress2/female/1">Title</a></li>
+                  <li><a href="/dress2/female/2">High To Low Price</a></li>
+                  <li><a href="/dress2/female/3">Low To High Price</a></li>
+                </ul>
+	      </div>
+	    </div>
+</div--><!-- /btn-group -->
+{% endifequal %}
+{% ifequal cat 1 %}
+<select id="foo">
+	<option value="">Sort By</option>
+	<option value="/dress2/male/1">Title</option>
+	<option value="/dress2/male/2">High to Low Price</option>
+	<option value="/dress2/male/3">Low to High Price</option>
+</select>
+<script>
+document.getElementById("foo").onchange = function() {
+            if (this.selectedIndex!==0) {
+		            window.location.href = this.value;
+			            }        
+	        };
+</script>
+<!--div class="bs-docs-example">
+            <div class="btn-toolbar" style="margin: 0;">
+              <div class="btn-group">
+                <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Sort By&nbsp;&nbsp;<span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a href="/dress2/male/1">Title</a></li>
+                  <li><a href="/dress2/male/2">High To Low Price</a></li>
+                  <li><a href="/dress2/male/3">Low To High Price</a></li>
+                </ul>
+	      </div>
+	    </div>
+</div--><!-- /btn-group -->
+{% endifequal %}
+
+<div id="example"></div>
+<table border="10">
+<thead>
+	<!--th style="padding:50px">
+		Type Dress:
+	</th-->
+	<th style="padding:50px">
+	</th>
+	<th style="padding:50px">
+		Title:
+	</th>
+	<th style="padding:50px">
+		Fabric:
+	</th>
+	<th style="padding:50px">
+		Cost
+	</th>
+	<th style="padding:50px">
+		Fit
+	</th>
+	<th style="padding:50px">
+		Size
+	</th>
+	<th style="padding:50px">
+		Color:
+	</th>
+	<th style="padding:50px">
+		Tags
+	</th>
+</thead>
+{%for i in ln%}	
+<div class="pagination">
+	<span class="step-links">
+		<span class ="current">	
+		<tr>
+			<!--td>
+				{{image|l:i|tdress}}
+			</td-->
+			<td>
+				<span ><img width="140px" height="110px" src="{{image|l:i|timg}}" alt="{{image|l:i|timg}}" class="demo"></img></span>
+			</td>
+			<td>
+				<a href="/dress/{{image|l:i|pk}}">
+				{{image|l:i|title}}
+				</a>
+			</td>
+			<td>
+				{{image|l:i|tfab}}
+			</td>
+			<td>
+				&euro; {{image|l:i|tcost|frcst}}
+			</td>
+			<td>
+				 {{image|l:i|tfit}}
+			</td>
+			<td>
+			</td>
+			<td></td>
+			<td >
+				{% ifequal image|l:i|pk|cin:inst  1%}
+				<u><span style="text-shadow:1px 1px 1px #888888;"><a href="/dress2/edit_tag/{{image|l:i|pk}}/">Suggest Tags</a></span></u>
+				{% endifequal %}
+				{% ifequal image|l:i|pk|cin:inst 0%}
+					<u><span style="text-shadow:1px 1px 1px #888888;"><a href="/dress2/add_tag/{{image|l:i|pk}}/">Suggest Tags</a></span></u>
+				{% endifequal %}
+				<br/><br/>
+				<u><span style="text-shadow:1px 1px 1px #888888;">
+					
+					<a href="/dress2/comment/{{image|l:i|pk}}">Comments</a>
+				   </span>
+				</u>
+			</td>
+		</tr>
+
+		</span>
+		</span>
+</div>	
+{%endfor%}
+</table>
+{% endifequal %}
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'zoom/jquery.loupe.js' %}"></script>
+<script type="text/javascript">$('.demo').loupe();</script>
+</body>
+</html>

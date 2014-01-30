@@ -1,0 +1,68 @@
+{% load staticfiles %}
+{% load a %}
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>jQZoom v1.2</title>
+<link href="{%  static 	'bootstrap/css/bootstrap.css'%}" rel="stylesheet" media="screen">
+<script type="text/javascript" src="{% static "jqzoom/js/jquery.js" %}"></script>
+<script type="text/javascript" src="{% static "jqzoom/js/jquery.jqzoom.js" %}"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+jQuery(document).ready(function(){
+$("img.jqzoom").jqueryzoom({
+				xzoom:465,//div default width(default width value is 200)
+				yzoom:455,//v default width(default height value is 200)
+				offset:110//ng div default offset(default offset value is 10)
+				//sition:"right"
+					//position:"right" //zooming div position(default position value is "right")
+					
+			});
+});
+</script>
+<link rel="stylesheet" href="{% static "jqzoom/style/style.css" %}" type="text/css" media="screen" />
+<link rel="stylesheet" href="{% static "jqzoom/style/jqzoom.css" %}" type="text/css" media="screen" />
+</head>
+<body style="background:url({% static 'bgnoise_lg.jpg' %}) repeat scroll 0 0 #F0F0F0;">
+
+<a href="/dress2/female" style="margin:30px;float:left" class="btn btn-inverse">Back</a></br>
+<br/>
+<center>
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+Press control to select multiple tags
+<form action="" method="post">{% csrf_token %}
+<table style="padding:8px;border-radius:8px 0px;width:40%;box-shadow:1px 4px 12px #444444;">
+<tr><td></tr></td>
+<tr><td></tr></td>
+<tr><td></tr></td>
+<tr><td></tr></td>
+<tr><td></tr></td>
+<tr><td></tr></td>
+<tr><td></tr></td>
+<tr><td><font size="3"><span style="float:left;">Style:</span></font><span style="float:right;">		{{form.style}}</span></tr></td>
+<tr><td><hr/></td></tr>
+<tr><td><font size="3"><span style="float:left;">Occasion:</span></font><span style="float:right;">		{{form.occassion}}</span></tr></td>
+<tr><td><hr/></td></tr>
+<tr><td><font size="3"><span style="float:left;">Bodytype:</span></font><span style="float:right;">		{{form.bodytype}}</span></tr></td>
+<!--table>
+{{form.as_table}}
+</table-->
+</table>
+<br/>
+<br/>
+</center>
+<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% for i in a %}
+                <b>{{i}}</b>&nbsp;&nbsp;&nbsp;&nbsp;<i>suggested</i>&nbsp;&nbsp;{{a|dval:i}}</br>
+{% endfor %}        
+</body>
+</html>
+

@@ -1,0 +1,13 @@
+from scrapy import log
+import json
+import codecs
+class JsonWithEncodingPipeline(object):
+    def __init__(self):
+        self.file = codecs.open('aqaq.json', 'w', encoding='utf-8')
+
+    def process_item(self, item, spider):
+    	item.save()
+        return item
+
+    def spider_closed(self, spider):
+        self.file.close()

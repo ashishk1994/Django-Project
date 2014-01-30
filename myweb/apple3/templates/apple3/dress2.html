@@ -1,0 +1,762 @@
+{% load staticfiles %}
+<!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" />
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+-->
+<link href="{%  static 	'bootstrap/css/bootstrap.css'%}" rel="stylesheet" media="screen">
+{%load a %}
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>MY WEB</title>
+
+<script type="text/javascript" src="{% static 'jqzoom/js/jquery.js' %}"></script>
+<script type="text/javascript" src="{% static 'jqzoom/js/jquery.jqzoom.js' %}"></script>
+<script>
+jQuery.noConflict();
+jQuery(document).ready(function(){
+$("img.jqzoom").jqueryzoom({
+				xzoom:465,//div default width(default width value is 200)
+				yzoom:465,//v default width(default height value is 200)
+				offset:110//ng div default offset(default offset value is 10)
+				//sition:"right"
+					//position:"right" //zooming div position(default position value is "right")
+					
+			});
+});
+</script>
+<link rel="stylesheet" href="{% static 'jqzoom/style/style.css' %}" type="text/css" media="screen" />
+<link rel="stylesheet" href="{% static 'jqzoom/style/jqzoom.css' %}" type="text/css" media="screen" />
+</head>
+<body style="background:url({% static 'bgnoise_lg.jpg' %}) repeat scroll 0 0 #F0F0F0;">
+<!--script type="text/javascript">
+		var options ={
+			currentpage:3,
+			totalpages:10
+		}
+		$('#example').bootstrapPaginator(options);
+</script-->
+<style>
+td{
+
+padding:8px 4px;
+margin:auto;
+}
+</style>
+
+<!--{{images.number}}
+{{paginator.num_pages}}-->
+<h2>Welcome {{user}}</h2>
+<a href="/logout">logout &nbsp</a><i class="icon-off"></i>
+<ul class="nav nav-pills">
+	<li>
+		<a href="/">Home</a>
+	</li>
+{% ifequal cat 2 %}
+	<li class="active">
+		<a href="/dress2/female/">Female</a>
+	</li>
+	<!--li>
+		<a href="/dress2/male/">Male</a>
+	</li-->
+{% endifequal %}
+{% ifequal cat 1 %}
+	<li>
+		<a href="/dress2/female/">Female</a>
+	</li>
+	<!--li class="active">
+		<a href="/dress2/male/">Male</a>
+	</li-->
+{% endifequal %}
+{% ifequal cat 0 %}
+	<li>
+		<a href="/dress2/female/">Female</a>
+	</li>
+	<!--li>
+		<a href="/dress2/male/">Male</a>
+	</li-->
+{% endifequal %}
+</ul>
+{% ifequal fl 0 %}
+
+<div class="pagination">
+<div class="pagination pagination-right">
+	<ul>
+		{% if images.has_previous %}
+			<li><a href="?page={{images.previous_page_number}}">Prev</a></li>
+		{% endif %}
+		<!--{% for j in lst %}
+			<li><a href="?page={{j}}">{{j}}</a></li>
+		{% endfor %}-->
+		{% if images.number|check:paginator.num_pages %}
+			<li><a href="?page={{images.next_page_number}}">Next</a></li>
+		{% endif %}
+		
+	</ul>
+</div>
+</div>
+<hr>
+{% ifequal cat 2 %}
+
+<select id="foo">
+	<option value="" selected=true>Sort By</option>
+	<option value="/dress2/female/1">Title</option>
+	<option value="/dress2/female/2">High to Low Price</option>
+	<option value="/dress2/female/3">Low to High Price</option>
+</select>
+
+<script>
+document.getElementById("foo").onchange = function() {
+            if (this.selectedIndex!==0) {
+		            window.location.href = this.value;
+			            }        
+		        };
+</script>
+{% ifequal flag '0' %}
+<select id="fo">
+	<option value="" selected=true>Choose Advertiser</option>
+	<option value="/dress2/female/4" >Aqaq</option>
+	<!--option value="/dress2/female/5">Shoptiques</option-->
+	<option value="/dress2/female/6" >Prettysecrets</option>
+	<!--option value="/dress2/female/7">Donnakaran</option-->
+	<option value="/dress2/female/8">Bloomingdale</option>
+	<option value="/dress2/female/9">Houseoffraser</option>
+	<option value="/dress2/female/10">Flipkart</option>
+	<option value="/dress2/female/11">Jabong</option>
+	<option value="/dress2/female/12">Inkfruit</option>
+	<option value="/dress2/female/13">Wallis</option>
+	<option value="/dress2/female/14">promod</option>
+	<option value="/dress2/female/15">Saksfifthavenue</option>
+	<option value="/dress2/female/16">ZLZ</option>
+	<option value="/dress2/female/17">Myntra</option>
+</select>
+<script>
+document.getElementById("fo").onchange = function() {
+            if (this.selectedIndex!==0) {
+		            window.location.href = this.value;
+			            }        
+	        };
+</script>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+{% endifequal %}
+
+
+{% ifequal flag '1' %}
+<select id="fo">
+	<option value="" selected=true>Choose Advertiser</option>
+	<option value="/dress2/female/4" >Aqaq</option>
+	<!--option value="/dress2/female/5">Shoptiques</option-->
+	<option value="/dress2/female/6" >Prettysecrets</option>
+	<!--option value="/dress2/female/7">Donnakaran</option-->
+	<option value="/dress2/female/8">Bloomingdale</option>
+	<option value="/dress2/female/9">Houseoffraser</option>
+	<option value="/dress2/female/10">Flipkart</option>
+	<option value="/dress2/female/11">Jabong</option>
+	<option value="/dress2/female/12">Inkfruit</option>
+	<option value="/dress2/female/13">Wallis</option>
+	<option value="/dress2/female/14">promod</option>
+	<option value="/dress2/female/15">Saksfifthavenue</option>
+	<option value="/dress2/female/16">ZLZ</option>
+	<option value="/dress2/female/17">Myntra</option>
+</select>
+<script>
+document.getElementById("fo").onchange = function() {
+            if (this.selectedIndex!==0) {
+		            window.location.href = this.value;
+			            }        
+	        };
+</script>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+{% endifequal %}
+
+
+{% ifequal flag '2' %}
+<select id="fo">
+	<option value=""selected=true >Choose Advertiser</option>
+	<option value="/dress2/female/4" >Aqaq</option>
+	<option value="/dress2/female/6" >Prettysecrets</option>
+	<option value="/dress2/female/8">Bloomingdale</option>
+	<option value="/dress2/female/9">Houseoffraser</option>
+	<option value="/dress2/female/10">Flipkart</option>
+	<option value="/dress2/female/11">Jabong</option>
+	<option value="/dress2/female/12">Inkfruit</option>
+	<option value="/dress2/female/13">Wallis</option>
+	<option value="/dress2/female/14">promod</option>
+	<option value="/dress2/female/15">Saksfifthavenue</option>
+	<option value="/dress2/female/16">ZLZ</option>
+	<option value="/dress2/female/17">Myntra</option>
+</select>
+<script>
+document.getElementById("fo").onchange = function() {
+            if (this.selectedIndex!==0) {
+		            window.location.href = this.value;
+			            }        
+	        };
+</script>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+{% endifequal %}
+
+{% ifequal flag '3' %}
+<select id="fo">
+	<option value="" selected=true>Choose Advertiser</option>
+	<option value="/dress2/female/4">Aqaq</option>
+	<option value="/dress2/female/6" >Prettysecrets</option>
+	<option value="/dress2/female/8">Bloomingdale</option>
+	<option value="/dress2/female/9">Houseoffraser</option>
+	<option value="/dress2/female/10">Flipkart</option>
+	<option value="/dress2/female/11">Jabong</option>
+	<option value="/dress2/female/12">Inkfruit</option>
+	<option value="/dress2/female/13">Wallis</option>
+	<option value="/dress2/female/14">promod</option>
+	<option value="/dress2/female/15">Saksfifthavenue</option>
+	<option value="/dress2/female/16">ZLZ</option>
+	<option value="/dress2/female/17">Myntra</option>
+</select>
+<script>
+document.getElementById("fo").onchange = function() {
+            if (this.selectedIndex!==0) {
+		            window.location.href = this.value;
+			            }        
+	        };
+</script>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+{% endifequal %}
+
+
+
+{% ifequal flag '4' %}
+<select id="fo">
+	<option value="" >Choose Advertiser</option>
+	<option value="/dress2/female/4" selected=true>Aqaq</option>
+	<option value="/dress2/female/6" >Prettysecrets</option>
+	<option value="/dress2/female/8">Bloomingdale</option>
+	<option value="/dress2/female/9">Houseoffraser</option>
+	<option value="/dress2/female/10">Flipkart</option>
+	<option value="/dress2/female/11">Jabong</option>
+	<option value="/dress2/female/12">Inkfruit</option>
+	<option value="/dress2/female/13">Wallis</option>
+	<option value="/dress2/female/14">promod</option>
+	<option value="/dress2/female/15">Saksfifthavenue</option>
+	<option value="/dress2/female/16">ZLZ</option>
+	<option value="/dress2/female/17">Myntra</option>
+</select>
+<script>
+document.getElementById("fo").onchange = function() {
+            if (this.selectedIndex!==0) {
+		            window.location.href = this.value;
+			            }        
+	        };
+</script>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="/dress2/call4" class="btn btn-primary">Update</a>
+{% endifequal %}
+
+{% ifequal flag '5' %}
+<select id="fo">
+	<option value="" >Choose Advertiser</option>
+	<option value="/dress2/female/4">Aqaq</option>
+	<option value="/dress2/female/6" >Prettysecrets</option>
+	<option value="/dress2/female/8">Bloomingdale</option>
+	<option value="/dress2/female/9">Houseoffraser</option>
+	<option value="/dress2/female/10">Flipkart</option>
+	<option value="/dress2/female/11">Jabong</option>
+	<option value="/dress2/female/12">Inkfruit</option>
+	<option value="/dress2/female/13">Wallis</option>
+	<option value="/dress2/female/14">promod</option>
+	<option value="/dress2/female/15">Saksfifthavenue</option>
+	<option value="/dress2/female/16">ZLZ</option>
+	<option value="/dress2/female/17">Myntra</option>
+</select>
+<script>
+document.getElementById("fo").onchange = function() {
+            if (this.selectedIndex!==0) {
+		            window.location.href = this.value;
+			            }        
+	        };
+</script>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+{% endifequal %}
+
+
+{% ifequal flag '6' %}
+<select id="fo">
+	<option value="" >Choose Advertiser</option>
+	<option value="/dress2/female/4">Aqaq</option>
+	<option value="/dress2/female/6" selected=true>Prettysecrets</option>
+	<option value="/dress2/female/8">Bloomingdale</option>
+	<option value="/dress2/female/9">Houseoffraser</option>
+	<option value="/dress2/female/10">Flipkart</option>
+	<option value="/dress2/female/11">Jabong</option>
+	<option value="/dress2/female/12">Inkfruit</option>
+	<option value="/dress2/female/13">Wallis</option>
+	<option value="/dress2/female/14">promod</option>
+	<option value="/dress2/female/15">Saksfifthavenue</option>
+	<option value="/dress2/female/16">ZLZ</option>
+	<option value="/dress2/female/17">Myntra</option>
+</select>
+<script>
+document.getElementById("fo").onchange = function() {
+            if (this.selectedIndex!==0) {
+		            window.location.href = this.value;
+			            }        
+	        };
+</script>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="/dress2/call6" class="btn btn-primary">Update</a>
+
+{% endifequal %}
+
+{% ifequal flag '7' %}
+<select id="fo">
+	<option value="" >Choose Advertiser</option>
+	<option value="/dress2/female/4" >Aqaq</option>
+	<option value="/dress2/female/6" >Prettysecrets</option>
+	<option value="/dress2/female/8">Bloomingdale</option>
+	<option value="/dress2/female/9">Houseoffraser</option>
+	<option value="/dress2/female/10">Flipkart</option>
+	<option value="/dress2/female/11">Jabong</option>
+	<option value="/dress2/female/12">Inkfruit</option>
+	<option value="/dress2/female/13">Wallis</option>
+	<option value="/dress2/female/14">promod</option>
+	<option value="/dress2/female/15">Saksfifthavenue</option>
+	<option value="/dress2/female/16">ZLZ</option>
+	<option value="/dress2/female/17">Myntra</option>
+</select>
+<script>
+document.getElementById("fo").onchange = function() {
+            if (this.selectedIndex!==0) {
+		            window.location.href = this.value;
+			            }        
+	        };
+</script>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<button class="btn btn-primary">Update</button>
+
+{% endifequal %}
+
+{% ifequal flag '8' %}
+<select id="fo">
+	<option value="" >Choose Advertiser</option>
+	<option value="/dress2/female/4" >Aqaq</option>
+	<option value="/dress2/female/6" >Prettysecrets</option>
+	<option value="/dress2/female/8" selected=true>Bloomingdale</option>
+	<option value="/dress2/female/9">Houseoffraser</option>
+	<option value="/dress2/female/10">Flipkart</option>
+	<option value="/dress2/female/11">Jabong</option>
+	<option value="/dress2/female/12">Inkfruit</option>
+	<option value="/dress2/female/13">Wallis</option>
+	<option value="/dress2/female/14">promod</option>
+	<option value="/dress2/female/15">Saksfifthavenue</option>
+	<option value="/dress2/female/16">ZLZ</option>
+	<option value="/dress2/female/17">Myntra</option>
+</select>
+<script>
+document.getElementById("fo").onchange = function() {
+            if (this.selectedIndex!==0) {
+		            window.location.href = this.value;
+			            }        
+	        };
+</script>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="/dress2/call8" class="btn btn-primary">Update</a>
+
+{% endifequal %}
+
+
+{% ifequal flag '9' %}
+<select id="fo">
+	<option value="" >Choose Advertiser</option>
+	<option value="/dress2/female/4" >Aqaq</option>
+	<option value="/dress2/female/6" >Prettysecrets</option>
+	<option value="/dress2/female/8">Bloomingdale</option>
+	<option value="/dress2/female/9" selected=true>Houseoffraser</option>
+	<option value="/dress2/female/10">Flipkart</option>
+	<option value="/dress2/female/11">Jabong</option>
+	<option value="/dress2/female/12">Inkfruit</option>
+	<option value="/dress2/female/13">Wallis</option>
+	<option value="/dress2/female/14">promod</option>
+	<option value="/dress2/female/15">Saksfifthavenue</option>
+	<option value="/dress2/female/16">ZLZ</option>
+	<option value="/dress2/female/17">Myntra</option>
+</select>
+<script>
+document.getElementById("fo").onchange = function() {
+            if (this.selectedIndex!==0) {
+		            window.location.href = this.value;
+			            }        
+	        };
+</script>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="/dress2/call9" class="btn btn-primary">Update</a>
+
+{% endifequal %}
+
+
+{% ifequal flag '10'%}
+<select id="fo">
+	<option value="" >Choose Advertiser</option>
+	<option value="/dress2/female/4" >Aqaq</option>
+	<option value="/dress2/female/6" >Prettysecrets</option>
+	<option value="/dress2/female/8">Bloomingdale</option>
+	<option value="/dress2/female/9">Houseoffraser</option>
+	<option value="/dress2/female/10" selected=true>Flipkart</option>
+	<option value="/dress2/female/11">Jabong</option>
+	<option value="/dress2/female/12">Inkfruit</option>
+	<option value="/dress2/female/13">Wallis</option>
+	<option value="/dress2/female/14">promod</option>
+	<option value="/dress2/female/15">Saksfifthavenue</option>
+	<option value="/dress2/female/16">ZLZ</option>
+	<option value="/dress2/female/17">Myntra</option>
+</select>
+<script>
+document.getElementById("fo").onchange = function() {
+            if (this.selectedIndex!==0) {
+		            window.location.href = this.value;
+			            }        
+	        };
+</script>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="/dress2/call10" class="btn btn-primary">Update</a>
+
+{% endifequal %}
+
+
+{% ifequal flag '11' %}
+<select id="fo">
+	<option value="" >Choose Advertiser</option>
+	<option value="/dress2/female/4">Aqaq</option>
+	<option value="/dress2/female/6">Prettysecrets</option>
+	<option value="/dress2/female/8">Bloomingdale</option>
+	<option value="/dress2/female/9">Houseoffraser</option>
+	<option value="/dress2/female/10">Flipkart</option>
+	<option value="/dress2/female/11"  selected=true>Jabong</option>
+	<option value="/dress2/female/12">Inkfruit</option>
+	<option value="/dress2/female/13">Wallis</option>
+	<option value="/dress2/female/14">promod</option>
+	<option value="/dress2/female/15">Saksfifthavenue</option>
+	<option value="/dress2/female/16">ZLZ</option>
+	<option value="/dress2/female/17">Myntra</option>
+</select>
+<script>
+document.getElementById("fo").onchange = function() {
+            if (this.selectedIndex!==0) {
+		            window.location.href = this.value;
+			            }        
+	        };
+</script>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="/dress2/call11" class="btn btn-primary">Update</a>
+
+{% endifequal %}
+
+{% ifequal flag '12' %}
+<select id="fo">
+	<option value="" >Choose Advertiser</option>
+	<option value="/dress2/female/4">Aqaq</option>
+	<option value="/dress2/female/6">Prettysecrets</option>
+	<option value="/dress2/female/8">Bloomingdale</option>
+	<option value="/dress2/female/9">Houseoffraser</option>
+	<option value="/dress2/female/10">Flipkart</option>
+	<option value="/dress2/female/11">Jabong</option>
+	<option value="/dress2/female/12"  selected=true>Inkfruit</option>
+	<option value="/dress2/female/13">Wallis</option>
+	<option value="/dress2/female/14">promod</option>
+	<option value="/dress2/female/15">Saksfifthavenue</option>
+	<option value="/dress2/female/16">ZLZ</option>
+	<option value="/dress2/female/17">Myntra</option>
+</select>
+<script>
+document.getElementById("fo").onchange = function() {
+            if (this.selectedIndex!==0) {
+		            window.location.href = this.value;
+			            }        
+	        };
+</script>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="/dress2/call12" class="btn btn-primary">Update</a>
+
+{% endifequal %}
+
+
+{% ifequal flag '13' %}
+<select id="fo">
+	<option value="" >Choose Advertiser</option>
+	<option value="/dress2/female/4" >Aqaq</option>
+	<option value="/dress2/female/6" >Prettysecrets</option>
+	<option value="/dress2/female/8">Bloomingdale</option>
+	<option value="/dress2/female/9">Houseoffraser</option>
+	<option value="/dress2/female/10">Flipkart</option>
+	<option value="/dress2/female/11">Jabong</option>
+	<option value="/dress2/female/12">Inkfruit</option>
+	<option value="/dress2/female/13" selected=true>Wallis</option>
+	<option value="/dress2/female/14">promod</option>
+	<option value="/dress2/female/15">Saksfifthavenue</option>
+	<option value="/dress2/female/16">ZLZ</option>
+	<option value="/dress2/female/17">Myntra</option>
+</select>
+<script>
+document.getElementById("fo").onchange = function() {
+            if (this.selectedIndex!==0) {
+		            window.location.href = this.value;
+			            }        
+	        };
+</script>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="/dress2/call13" class="btn btn-primary">Update</a>
+
+{% endifequal %}
+
+
+{% ifequal flag '14' %}
+<select id="fo">
+	<option value="" >Choose Advertiser</option>
+	<option value="/dress2/female/4" >Aqaq</option>
+	<option value="/dress2/female/6" >Prettysecrets</option>
+	<option value="/dress2/female/8">Bloomingdale</option>
+	<option value="/dress2/female/9">Houseoffraser</option>
+	<option value="/dress2/female/10">Flipkart</option>
+	<option value="/dress2/female/11">Jabong</option>
+	<option value="/dress2/female/12">Inkfruit</option>
+	<option value="/dress2/female/13">Wallis</option>
+	<option value="/dress2/female/14" selected=true>promod</option>
+	<option value="/dress2/female/15">Saksfifthavenue</option>
+	<option value="/dress2/female/16">ZLZ</option>
+	<option value="/dress2/female/17">Myntra</option>
+</select>
+<script>
+document.getElementById("fo").onchange = function() {
+            if (this.selectedIndex!==0) {
+		            window.location.href = this.value;
+			            }        
+	        };
+</script>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="/dress2/call14" class="btn btn-primary">Update</a>
+
+{% endifequal %}
+
+
+{% ifequal flag '15' %}
+<select id="fo">
+	<option value="" >Choose Advertiser</option>
+	<option value="/dress2/female/4">Aqaq</option>
+	<option value="/dress2/female/6" >Prettysecrets</option>
+	<option value="/dress2/female/8">Bloomingdale</option>
+	<option value="/dress2/female/9">Houseoffraser</option>
+	<option value="/dress2/female/10">Flipkart</option>
+	<option value="/dress2/female/11">Jabong</option>
+	<option value="/dress2/female/12">Inkfruit</option>
+	<option value="/dress2/female/13">Wallis</option>
+	<option value="/dress2/female/14">promod</option>
+	<option value="/dress2/female/15" selected=true>Saksfifthavenue</option>
+	<option value="/dress2/female/16">ZLZ</option>
+	<option value="/dress2/female/17">Myntra</option>
+</select>
+<script>
+document.getElementById("fo").onchange = function() {
+            if (this.selectedIndex!==0) {
+		            window.location.href = this.value;
+			            }        
+	        };
+</script>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="/dress2/call15" class="btn btn-primary">Update</a>
+
+{% endifequal %}
+
+
+{% ifequal flag '16' %}
+<select id="fo">
+	<option value="" >Choose Advertiser</option>
+	<option value="/dress2/female/4" >Aqaq</option>
+	<option value="/dress2/female/6" >Prettysecrets</option>
+	<option value="/dress2/female/8">Bloomingdale</option>
+	<option value="/dress2/female/9">Houseoffraser</option>
+	<option value="/dress2/female/10">Flipkart</option>
+	<option value="/dress2/female/11">Jabong</option>
+	<option value="/dress2/female/12">Inkfruit</option>
+	<option value="/dress2/female/13">Wallis</option>
+	<option value="/dress2/female/14">promod</option>
+	<option value="/dress2/female/15">Saksfifthavenue</option>
+	<option value="/dress2/female/16" selected=true>ZLZ</option>
+	<option value="/dress2/female/17">Myntra</option>
+</select>
+<script>
+document.getElementById("fo").onchange = function() {
+            if (this.selectedIndex!==0) {
+		            window.location.href = this.value;
+			            }        
+	        };
+</script>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="/dress2/call16" class="btn btn-primary">Update</a>
+
+{% endifequal %}
+
+{% ifequal flag '17' %}
+<select id="fo">
+	<option value="" >Choose Advertiser</option>
+	<option value="/dress2/female/4" >Aqaq</option>
+	<option value="/dress2/female/6" >Prettysecrets</option>
+	<option value="/dress2/female/8">Bloomingdale</option>
+	<option value="/dress2/female/9">Houseoffraser</option>
+	<option value="/dress2/female/10">Flipkart</option>
+	<option value="/dress2/female/11">Jabong</option>
+	<option value="/dress2/female/12">Inkfruit</option>
+	<option value="/dress2/female/13">Wallis</option>
+	<option value="/dress2/female/14">promod</option>
+	<option value="/dress2/female/15">Saksfifthavenue</option>
+	<option value="/dress2/female/16">ZLZ</option>
+	<option value="/dress2/female/17" selected=true >Myntra</option>
+</select>
+<script>
+document.getElementById("fo").onchange = function() {
+            if (this.selectedIndex!==0) {
+		            window.location.href = this.value;
+			            }        
+	        };
+</script>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="/dress2/call17" class="btn btn-primary">Update</a>
+
+{% endifequal %}
+
+
+
+
+{% endifequal %}
+{% ifequal cat 1 %}
+<select id="foo">
+	<option value="">Sort By</option>
+	<option value="/dress2/male/1">Title</option>
+	<option value="/dress2/male/2">High to Low Price</option>
+	<option value="/dress2/male/3">Low to High Price</option>
+</select>
+<select id="fo">
+	<option value="">Choose Advertiser</option>
+	<option value="/dress2/male/4">Aqaq</option>
+	<option value="/dress2/male/5">Shoptiques</option>
+	<option value="/dress2/male/6">Prettysecrets</option>
+</select>
+<script>
+document.getElementById("foo").onchange = function() {
+            if (this.selectedIndex!==0) {
+		            window.location.href = this.value;
+			            }        
+	        };
+</script>
+
+<!--div class="bs-docs-example">
+            <div class="btn-toolbar" style="margin: 0;">
+              <div class="btn-group">
+                <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Sort By&nbsp;&nbsp;<span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a href="/dress2/male/1">Title</a></li>
+                  <li><a href="/dress2/male/2">High To Low Price</a></li>
+                  <li><a href="/dress2/male/3">Low To High Price</a></li>
+                </ul>
+	      </div>
+	    </div>
+</div--><!-- /btn-group -->
+{% endifequal %}
+
+<div id="example"></div>
+<table border="10">
+<thead>
+	<!--th style="padding:50px">
+		Type Dress:
+	</th-->
+	<th style="padding:50px">
+	</th>
+	<th style="padding:50px">
+		Title:
+	</th>
+	<!--th style="padding:50px">
+		Fabric:
+	</th-->
+	<th style="padding:50px">
+		Cost
+	</th>
+	<th style="padding:50px">
+		Cost Currency
+	</th>
+	<!--th style="padding:50px">
+		Fit
+	</th-->
+	<th style="padding:50px">
+		Size
+	</th>
+	<th style="padding:50px">
+		Color:
+	</th>
+	<th style="padding:50px">
+		Tags
+	</th>
+</thead>
+{%for i in ln%}	
+<div class="pagination">
+	<span class="step-links">
+		<span class ="current">	
+		<tr>
+			<!--td>
+				{{image|l:i|tdress}}
+			</td-->
+			<td>
+				<span ><img width="140px" height="110px" src="{{image|l:i|timg}}" alt="{{image|l:i|timg}}" class="jqzoom"></img></span>
+			</td>
+			<td>
+				<a href="/dress/{{image|l:i|pk}}">
+				{{image|l:i|title}}
+				</a>
+			</td>
+			<!--td>
+				{{image|l:i|tfab}}
+			</td-->
+			<td>
+				 {{image|l:i|tcost}}
+			</td>
+			<td>
+				 {{image|l:i|tcur}}
+			</td>
+			<!--td>
+				 {{image|l:i|tfit}}
+			</td-->
+			<td>
+				{{image|l:i|tsize}}
+			</td>
+			<td>
+				{{image|l:i|tcolor}}
+			</td>
+			<td >
+				{% ifequal image|l:i|pk|cin:inst  1%}
+				<u><span style="text-shadow:1px 1px 1px #888888;"><a href="/dress2/edit_tag/{{image|l:i|pk}}/">Suggest Tags</a></span></u>
+				{% endifequal %}
+				{% ifequal image|l:i|pk|cin:inst 0%}
+					<u><span style="text-shadow:1px 1px 1px #888888;"><a href="/dress2/add_tag/{{image|l:i|pk}}/">Suggest Tags</a></span></u>
+				{% endifequal %}
+				<br/><br/>
+				<u><span style="text-shadow:1px 1px 1px #888888;">
+					
+					<a href="/dress2/comment/{{image|l:i|pk}}">Comments</a>
+				   </span>
+				</u>
+			</td>
+		</tr>
+
+		</span>
+		</span>
+</div>	
+{%endfor%}
+</table>
+{% endifequal %}
+
+</body>
+</html>

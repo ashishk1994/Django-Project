@@ -1,0 +1,31 @@
+
+from django.conf.urls import patterns, url
+from apple3 import views
+
+urlpatterns=patterns('',
+		url(r'^$',views.index,name='index'),
+	#	url(r'^login/$',views.log_view,name='log_view'),
+		url(r'^logout/$', views.logout_page),
+		url(r'^dress/(?P<title_id>\d+)/$',views.title,name='title'),
+		url(r'^dress/male/$',views.male,name='male'),	
+		url(r'^dress/female/$',views.female,name='female'),	
+		url(r'^dress2/call/$',views.call,name='call'),	
+		url(r'^dress2/call4/$',views.call4,name='call4'),	
+		url(r'^dress2/call6/$',views.call6,name='call6'),	
+		url(r'^dress2/call8/$',views.call8,name='call8'),	
+		url(r'^dress2/call9/$',views.call9,name='call9'),	
+		url(r'^dress2/call10/$',views.call10,name='call10'),	
+		url(r'^dress2/call11/$',views.call11,name='call11'),	
+		url(r'^dress2/call12/$',views.call12,name='call12'),	
+		url(r'^dress2/call13/$',views.call13,name='call13'),	
+		url(r'^dress2/call14/$',views.call14,name='call14'),	
+		url(r'^dress2/call15/$',views.call15,name='call15'),	
+		url(r'^dress2/call16/$',views.call16,name='call16'),	
+		url(r'^dress2/call17/$',views.call17,name='call17'),	
+		url(r'^dress2/female/(?P<flag>\d*)$',views.female,name='female2'),	
+		url(r'^dress2/male/(?P<flag>\d*)$',views.male,name='male2'),	
+		url(r'^dress2/add_tag/(?P<title_id>\d+)/$',views.add_tag,name='add_tag'),	
+		url(r'^dress2/edit_tag/(?P<title_id>\d+)/$',views.edit_tag,name='edit_tag'),	
+		url(r'^dress2/$',views.dress,name='dress'),
+		url(r'^dress2/comment/(?P<title_id>\d+)/$',views.comment,name='comment'),
+		)

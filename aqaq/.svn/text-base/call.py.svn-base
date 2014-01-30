@@ -1,0 +1,39 @@
+import sys
+import os
+c=os.getcwd()
+os.chdir("../myweb")
+d=os.getcwd()
+os.chdir(c)
+sys.path.insert(0, d)
+
+# Setting up django's settings module name.
+# This module is located at /home/rolando/projects/myweb/myweb/settings.py.
+import os
+os.environ['DJANGO_SETTINGS_MODULE'] = 'myweb.settings'
+
+
+
+from twisted.internet import reactor
+from scrapy.crawler import Crawler
+from scrapy.settings import CrawlerSettings
+from scrapy import log, signals
+from scrapy.xlib.pydispatch import dispatcher
+def stop_reactor():
+    reactor.stop()
+
+dispatcher.connect(stop_reactor, signal=signals.spider_closed)
+crawler = Crawler(CrawlerSettings())
+crawler.configure()
+
+from aqaq.spiders.spider import aqaqspider
+
+spider = aqaqspider(domain='aqaq.com')
+crawler.crawl(spider)
+crawler.start()
+log.start(loglevel=log.DEBUG)
+log.msg("------------>Running reactor")
+result = reactor.run()
+print result
+log.msg("------------>Running stoped")
+
+

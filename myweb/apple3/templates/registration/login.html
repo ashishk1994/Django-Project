@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="lt-ie9" lang="en"> <![endif]-->
+
+{% block content %}
+{% load staticfiles %}
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Dark Login Form</title>
+        {% block stylesheet %}
+  <link rel="stylesheet" href={% static 'css/style.css' %} >
+        {% endblock stylesheet %}
+  <!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+  <form method="post" action="." class="login">{% csrf_token %}
+    <p>
+      <label for="login">UserName:</label>
+      {{ form.username }}
+    </p>
+
+    <p>
+      <label for="password">Password:</label>
+       {{ form.password }}
+    </p>
+
+    <p class="login-submit">
+      <button type="submit" class="login-button">Login</button>
+    </p>
+
+    <p class="forgot-password"><a href="{% url 'auth_password_reset' %}">Forgot your password?</a></p>
+    <p>{% trans "Not member" %}? <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>!</p>
+  </form>
+{% endblock %}
+
+
+
+
+

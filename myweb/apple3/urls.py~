@@ -1,0 +1,10 @@
+
+from django.conf.urls import patterns, url
+from app import views
+
+urlpatterns=patterns('',
+		url(r'^$', 'django.contrib.auth.views.login'),
+		url(r'^dress/$',views.index,name='index'),
+	#	url(r'^login/$',views.log_view,name='log_view'),
+		url(r'^(?P<title_id>\d+)/$',views.title,name='title'),
+			)

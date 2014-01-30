@@ -1,0 +1,109 @@
+{% load staticfiles %}
+<!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" />
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+-->
+<link href="{%  static 	'bootstrap/css/bootstrap.css'%}" rel="stylesheet" media="screen">
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+
+{%load a %}
+<script type="text/javascript">
+		var options ={
+			currentpage:3,
+			totalpages:10
+		}
+		$('#example').bootstrapPaginator(options);
+</script>
+<!--{% for i in  ln%}
+<div class="pagination">
+	<span class="step-links">
+		{% if images.has_previous %}
+			<a href="?page={{images.previous_page_number}}">Previous</a>
+		{% endif %}
+		<span class="current">
+			Page {{image|l:i|title}} of {{i.paginator.num_pages}}.
+		</span>
+		{% if images.has_next %}
+			<a href="?page={{ images.next_page_number}}"></a>
+		{% endif %}
+	</span>
+</div>
+{% endfor %}-->
+<!--{% for i in im %}
+	{{image|l:i}}
+{% endfor %}-->
+<!--{% if images.has_previous %}
+	<a href="?page={{images.previous_page_number}}">Previous</a>
+{% endif %}
+{% if images.has_next %}
+	<a href="?page={{images.next_page_number}}">Next</a>
+{% endif %}-->
+<!--{{images.number}}
+{{paginator.num_pages}}-->
+<h2>Welcome {{user}}</h2>
+<a href="/dress/logout">logout</a>
+<ul class="nav nav-pills">
+	<li>
+		<a href="/dress/main/">Home</a>
+	</li>
+{% ifequal cat 2 %}
+	<li class="active">
+		<a href="/dress/female/">Female</a>
+	</li>
+	<li>
+		<a href="/dress/male/">Male</a>
+	</li>
+{% endifequal %}
+{% ifequal cat 1 %}
+	<li>
+		<a href="/dress/female/">Female</a>
+	</li>
+	<li class="active">
+		<a href="/dress/male/">Male</a>
+	</li>
+{% endifequal %}
+</ul>
+
+
+<div class="pagination">
+<div class="pagination pagination-right">
+	<ul>
+		{% if images.has_previous %}
+			<li><a href="?page={{images.previous_page_number}}">Prev</a></li>
+		{% endif %}
+		{% for j in lst %}
+			<li><a href="?page={{j}}">{{j}}</a></li>
+		{% endfor %}
+		{% if images.number|check:paginator.num_pages %}
+			<li><a href="?page={{images.next_page_number}}">Next</a></li>
+		{% endif %}
+		
+	</ul>
+</div>
+</div>
+
+<div id="example"></div>
+<table >
+<tr style="padding:10px">
+{%for i in ln%}	
+<div class="pagination">
+	<span class="step-links">
+		<span class ="current">
+			<td><center><a href="/dress/{{image|l:i|pk}}"><img src="{{image|l:i|url}}" class="img-circle" width="250px" height="400px"></a>
+			<br/>
+			<b>{{image|l:i|title}}</b><br/>
+		    	<b>&euro; {{image|l:i|cost|frcst}}</b></center>
+		    	</td>
+		<!--<div style="margin : 0px auto;">
+		<span><img src="{{image|l:i|url}}" width="250px" height="400px"></span><br/>
+		<span style="text-align:center; width : inherit;">{{image|l:i|title}}</span><br/>
+		<span style="text-align:center; width:inherit;">{{image|l:i|cost}}</span><br/>
+		</div>-->
+		{% if i|divisibleby:"3" %}
+			</tr>
+			<tr style="padding:10px">
+		{% endif %}
+		</span>
+	</span>
+</div>	
+{%endfor%}
+</table>

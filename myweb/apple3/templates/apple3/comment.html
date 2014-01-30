@@ -1,0 +1,25 @@
+{% load staticfiles %}
+<link href="{%  static 	'bootstrap/css/bootstrap.css'%}" rel="stylesheet" media="screen">
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+{%load a %}
+<html>
+<body style="background:url({% static 'bgnoise_lg.jpg' %}) repeat scroll 0 0 #F0F0F0;">
+</br>
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+
+<a class="btn btn-inverse" href="/dress2/female" >Back</a>
+
+<form action="" method="post">{% csrf_token %}
+<center>ADD COMMENTS: <br/>{{form.desc}}<br/></center>
+<center><button class="btn btn-primary" type="submit">Submit</button></center>
+</form>
+<center>
+{% for i in obj %}
+	<b>{{i.userid}}</b> <i> says</i> {{i.desc}} </br>
+{% endfor %}
+</center>
+</body>
+</html>

@@ -1,0 +1,117 @@
+{% load staticfiles %}
+{% load a %}
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>jQZoom v1.2</title>
+
+<script type="text/javascript" src="{% static "jqzoom/js/jquery.js" %}"></script>
+<script type="text/javascript" src="{% static "jqzoom/js/jquery.jqzoom.js" %}"></script>
+<script type="text/javascript">
+jQuery.noConflict();
+jQuery(document).ready(function(){
+$("img.jqzoom").jqueryzoom({
+				xzoom:465,//div default width(default width value is 200)
+				yzoom:455,//v default width(default height value is 200)
+				offset:110//ng div default offset(default offset value is 10)
+				//sition:"right"
+					//position:"right" //zooming div position(default position value is "right")
+					
+			});
+});
+</script>
+<link rel="stylesheet" href="{% static "jqzoom/style/style.css" %}" type="text/css" media="screen" />
+<link rel="stylesheet" href="{% static "jqzoom/style/jqzoom.css" %}" type="text/css" media="screen" />
+</head>
+<body style="background:url({% static 'bgnoise_lg.jpg' %}) repeat scroll 0 0 #F0F0F0;">
+
+
+
+<style>
+.right,.left{
+width:575px;
+display:inline-block;
+}
+.right > h1{
+width:550px;
+}
+.some{
+border:2px solid black;
+width:80px;
+height:80px;
+
+}
+.tab{
+border:1px solid #666666;
+text-align:center;
+height:40px;
+width:40px;      
+}
+.h1{
+clear: both;
+    color: #66CCFF;
+    display: block;
+    font-family: 'Conv_FuturaStd-Book',arial;
+    font-size: 24px;
+    letter-spacing: 2px;
+    margin: 17px 0 20px;
+    overflow: hidden;
+    padding-bottom: 6px;
+    padding-top: 9px;
+    text-transform: uppercase;
+}
+</style>
+<div class="left" style="float:left;margin-top:20px">
+	<span><img src="{{cur.image_urls}}" width="400px" height="500px" class="jqzoom" alt="{{cur.image_urls}}"></img></span>
+</div>
+
+	<h1 style="font-color:blue;">{{cur.title}}</h1>
+<div class="right">
+{% ifequal cur.cost|pr 1 %}
+	<h2 style="font-family:Arial,Helvetica, sans-seri;font-size:25px">Price &euro; {{cur.cost|frcst}}</h2>	
+{% endifequal %}
+	<p style="text-align:justified;font-family:Arial,Helvetica, sans-seri; font-size:14px">{{cur.desc}}</p><br/><br/>
+	<table>
+	<td>Size:</td> 
+	{% for i in sz %}
+	<td class="tab">
+		{{i}}
+	</td>
+	{% endfor %}
+	<tr></tr>
+	<tr></tr>
+	<tr></tr>
+	<tr></tr>
+	<tr></tr>
+	<tr></tr>
+	<tr></tr>
+	<tr>
+	<td>
+		<b>Fabric:</b>
+	</td>
+	<td colspan="{{lsz}}">
+		{{cur.fabric}}
+	</td>
+	</tr>
+	<tr></tr>
+	<tr></tr>
+	<tr></tr>
+	<tr></tr>
+	<tr></tr>
+	<tr></tr>
+	<tr></tr>
+	<tr>
+		<td>
+			<b>Fit:</b>
+		</td>
+		<td colspan="{{lsz}}">
+			{{cur.fit}}
+		</td>
+	</tr>
+</table>
+</div>
+
+
+</body>
+</html>
+
